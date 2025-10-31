@@ -42,7 +42,7 @@ namespace MO_31_2_Varfolomeev_NeiroModel.NeiroNet
         public void Train(Network net)
         {
             net.input_layer = new InputLayer(NetworkMode.Train); // инициализация входного слоя
-            int epoches = 10;
+            int epoches = 20;
             double tmpSumError; // временная переменная суммы ошибок
             double[] errors; // вектор сигнала ошибки выходного слоя
             double[] temp_gsums1; // вектор градиента 1-огго скрытого слоя
@@ -50,7 +50,7 @@ namespace MO_31_2_Varfolomeev_NeiroModel.NeiroNet
 
             e_error_avr = new double[epoches];
 
-            for (int k=0; k < epoches; k++) // перебор эпох обучения
+            for (int k = 0; k < epoches; k++) // перебор эпох обучения
             {
                 e_error_avr[k] = 0; // вначале каждой жпохи обучения значение средней энергии ошибки эпохи
                 net.input_layer.Shuffling_Array_Rows(net.input_layer.Trainset); // перетасовка обучаюзей выборки
@@ -88,7 +88,7 @@ namespace MO_31_2_Varfolomeev_NeiroModel.NeiroNet
 
             net.hidden_layer1.WeightInitialize(MemoryMode.SET, nameof(hidden_layer1) + "_memory.csv");
             net.hidden_layer2.WeightInitialize(MemoryMode.SET, nameof(hidden_layer2) + "_memory.csv");
-            net.output_layer.WeightInitialize(MemoryMode.SET, nameof(hidden_layer2) + "_memory.csv");
+            net.output_layer.WeightInitialize(MemoryMode.SET, nameof(output_layer) + "_memory.csv");
         }
     }
 }

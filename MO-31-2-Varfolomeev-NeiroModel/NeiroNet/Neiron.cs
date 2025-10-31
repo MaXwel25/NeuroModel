@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using static System.Math;
+﻿using static System.Math;
 
 namespace MO_31_2_Varfolomeev_NeiroModel.NeiroNet
 {
@@ -50,8 +49,7 @@ namespace MO_31_2_Varfolomeev_NeiroModel.NeiroNet
                         ApplySoftmax();
                     }
                     */
-                    output = HyperbolicTangent(sum);
-                    derivative = DerivativeHyperbolicTangent(output);
+                    output = Exp(sum);
                     break;
             }
         }
