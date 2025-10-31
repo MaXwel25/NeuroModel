@@ -16,6 +16,8 @@ namespace MO_31_2_Varfolomeev_NeiroModel.NeiroNet
         public double[] Inputs { get => inputs; set => inputs = value; }
         public double Output { get => output; }
         public double Derivative { get => derivative; }
+
+        // конструктор
         public Neiron(double[] memoryWeights, NeironType typeNeiron)
         {
             type = typeNeiron;

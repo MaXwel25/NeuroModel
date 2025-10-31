@@ -8,7 +8,7 @@
 
         }
 
-        // прямой подход
+        // прямой проход
         public override void Recognize(Network net, Layer NextLayer)
         {
             double e_sum = 0;
@@ -22,6 +22,8 @@
         public override double[] BackwardPass(double[] errors)
         {
             double[] gr_sum = new double[numofprevneirons + 1];
+
+            // вычисление градиентныых сумм
             for (int j = 0; j < numofprevneirons + 1; j++)
             {
                 double sum = 0;
@@ -39,7 +41,7 @@
                     if (n == 0)  // если порог
                         delwat = momentum * lastdeltaweights[i, 0] + learningrate * errors[i];
                     else
-                        delwat = momentum * lastdeltaweights[i, n] + learningrate * neirons[n].Inputs[n - 1] * errors[i];
+                        delwat = momentum * lastdeltaweights[i, n] + learningrate * neirons[i].Inputs[n - 1] * errors[i];
                 
                     lastdeltaweights[i, n] = delwat;
                     neirons[i].Weights[n] += delwat; // коррекция весов

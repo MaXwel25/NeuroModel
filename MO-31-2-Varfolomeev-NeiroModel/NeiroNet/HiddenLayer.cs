@@ -18,7 +18,7 @@
         }
 
         // обратный проход
-        public override double[] BackwardPass(double[] fr_sum)
+        public override double[] BackwardPass(double[] gr_sums)
         {
             double[] gr_sum = new double[numofprevneirons];
             for (int j = 0; j < numofprevneirons; j++) // цикл вычисления градиента (сумма j-ого нейрона)
@@ -26,7 +26,7 @@
                 double sum = 0;
                 for (int k=0; k < numofneirons; k++)
                 {
-                    sum += neirons[k].Weights[j] * neirons[k].Derivative * gr_sum[k]; // через градиентные суммы и производные
+                    sum += neirons[k].Weights[j] * neirons[k].Derivative * gr_sums[k]; // через градиентные суммы и производные
                 }
                 gr_sum[j] = sum;
             }
@@ -34,13 +34,13 @@
 
             for (int i = 0; i < numofneirons; i++)
             {
-                for (int n=0; n < numofprevneirons; n++)
+                for (int n = 0; n < numofprevneirons; n++)
                 {
                     double delwat;
                     if (n == 0) // если порог
-                        delwat = momentum * lastdeltaweights[i, 0] + learningrate * neirons[i].Derivative * gr_sum[i];
+                        delwat = momentum * lastdeltaweights[i, 0] + learningrate * neirons[i].Derivative * gr_sums[i];
                     else
-                        delwat = momentum * lastdeltaweights[i, n] + learningrate * neirons[i].Inputs[n - 1] * neirons[i].Derivative * gr_sum[i];
+                        delwat = momentum * lastdeltaweights[i, n] + learningrate * neirons[i].Inputs[n - 1] * neirons[i].Derivative * gr_sums[i];
 
                     lastdeltaweights[i, n] = delwat;
                     neirons[i].Weights[n] += delwat; // коррекция весов

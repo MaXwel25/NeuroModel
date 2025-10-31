@@ -1,6 +1,4 @@
-﻿using System.Net.Http.Headers;
-using System.Resources;
-
+﻿
 namespace MO_31_2_Varfolomeev_NeiroModel.NeiroNet
 {
     class Network
@@ -15,18 +13,19 @@ namespace MO_31_2_Varfolomeev_NeiroModel.NeiroNet
         private double[] e_error_avr; // среднее значение энергии ошибки
 
         // свойства
-        public double[] Fact { get => fact; }
+        public double[] Fact { get => fact; } // массив фактического выхода сети
         // среднее значение энергии ошибки эпохи обучения
         public double[] E_errors_avr { get => e_error_avr; set => e_error_avr = value;  }
 
         // для инициализации всех слоёв
+        /*
         public void InitializeLayers()
         {   
             hidden_layer1 = new HiddenLayer(70, 15, NeironType.Hidden, nameof(hidden_layer1));
             hidden_layer2 = new HiddenLayer(32, 70, NeironType.Hidden, nameof(hidden_layer2));
             output_layer = new OutputLayer(10, 32, NeironType.Output, nameof(output_layer));
         }
-
+        */
         // конструктор
         public Network() { }
 
