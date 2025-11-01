@@ -137,6 +137,11 @@ namespace MO_31_2_Varfolomeev_NeiroModel
         {
             network.Train(network);
 
+            for (int i=0; i < network.E_errors_avr.Length; i++)
+            {
+                chart_Eavr.Series[0].Points.AddY(network.E_errors_avr[i]);
+            }
+
             MessageBox.Show("Обучение успешно завершено.", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
