@@ -286,7 +286,7 @@
             series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
             series1.Name = "Series1";
             this.chart_Eavr.Series.Add(series1);
-            this.chart_Eavr.Size = new System.Drawing.Size(422, 300);
+            this.chart_Eavr.Size = new System.Drawing.Size(734, 444);
             this.chart_Eavr.TabIndex = 23;
             this.chart_Eavr.Text = "chart1";
             title1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -299,7 +299,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Highlight;
-            this.ClientSize = new System.Drawing.Size(795, 319);
+            this.ClientSize = new System.Drawing.Size(1098, 459);
             this.Controls.Add(this.chart_Eavr);
             this.Controls.Add(this.Button_train);
             this.Controls.Add(this.button_recognize);
