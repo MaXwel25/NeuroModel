@@ -13,8 +13,8 @@ namespace MO_31_2_Varfolomeev_NeiroModel.NeiroNet
         string pathFileWeights; // путь к файлу саниптическов весов
         protected int numofneirons; // число нейронов текущего слоя
         protected int numofprevneirons; // число нейронов предыдущего слоя
-        protected const double learningrate = 0.075; // скорость обучения 0.06
-        protected const double momentum = 0.000d; // момент инерции 0.050d
+        protected const double learningrate = 0.061; // скорость обучен ия 0.06
+        protected const double momentum = 0.011d; // момент инерции 0.050d
         protected double[,] lastdeltaweights; // веса предыдущей итерации
         protected Neiron[] neirons; // массив нейронов текущего слоя
 
@@ -55,7 +55,7 @@ namespace MO_31_2_Varfolomeev_NeiroModel.NeiroNet
             for (int i = 0; i < non; i++) // цикл формирования нейронов слоя и заполнения
             {
                 double[] tmp_weights = new double[nopn + 1];
-                for (int j = 0; j < nopn; j++)
+                for (int j = 0; j < nopn + 1; j++)
                 {
                     tmp_weights[j] = Weights[i, j];
                 }
@@ -110,41 +110,7 @@ namespace MO_31_2_Varfolomeev_NeiroModel.NeiroNet
 
                 // инициализация весов для нейронов
                 case MemoryMode.INIT:
-                    // нерабочая версия
                     /*
-                    tmpStrWeights = new string[numofneirons];
-                    Random random = new Random();
-
-                    for (int i = 0; i < numofneirons; i++)
-                    {
-                        double weightSum = 0.0;
-                        double weightSquaredSum = 0.0;
-
-                        // Picking random weights from [-1; +1] 
-                        for (int j = 0; j < numofprevneirons + 1; j++)
-                        {
-                            weights[i, j] = random.NextDouble() * 2.0 - 1.0;
-                            weightSum += weights[i, j];
-                            weightSquaredSum += weights[i, j] * weights[i, j];
-                        }
-
-                        // Calculating average weight and base offset
-                        double averageWeight = weightSum / (numofprevneirons + 1);
-                        double baseOffset = Math.Sqrt((weightSquaredSum / (numofprevneirons + 1))
-                            - (averageWeight * averageWeight));
-
-                        // Standartizing weights and writing them to file
-                        for (int j = 0; j < numofprevneirons + 1; j++)
-                        {
-                            weights[i, j] = (weights[i, j] - averageWeight) / baseOffset;
-                            tmpStrWeights[i] += weights[i, j].ToString().Replace(',', '.') + ";";
-                        }
-                    }
-
-                    File.WriteAllLines(path, tmpStrWeights);
-                    break;
-                    */
-
                     tmpStrWeights = new string[numofneirons];
                     Random random = new Random();
 
@@ -164,11 +130,11 @@ namespace MO_31_2_Varfolomeev_NeiroModel.NeiroNet
                         for (int j = 0; j < numofprevneirons + 1; j++)
                         {
                             weights[i, j] -= averageWeight;
-                            /*
+                            
                             // гарантируем, что веса в пределах [-1, 1]
                             if (weights[i, j] > 1.0) weights[i, j] = 1.0;
                             if (weights[i, j] < -1.0) weights[i, j] = -1.0;
-                            */
+                            
                         }
 
                         // запись в файл
@@ -184,7 +150,50 @@ namespace MO_31_2_Varfolomeev_NeiroModel.NeiroNet
 
                     File.WriteAllLines(path, tmpStrWeights);
                     break;
+                    */
+                    tmpStrWeights = new string[numofneirons];
+                    Random random = new Random();
 
+                    double avgSum = 0.0;
+                    double avgSquaredSum = 0.0;
+                    double scale = Math.Sqrt(2.0 / (numofprevneirons + numofneirons));
+
+                    for (int i = 0; i < numofneirons; i++)
+                    {
+                        double weightSum = 0.0;
+                        double weightSquaredSum = 0.0;
+
+                        for (int j = 0; j < numofprevneirons + 1; j++)
+                        {
+                            double u1 = 1.0 - random.NextDouble();
+                            double u2 = 1.0 - random.NextDouble();
+                            double randStrNormal = Math.Sqrt(-2.0 * Math.Log(u1)) * Math.Sin(2.0 * Math.PI * u2);
+
+                            weights[i, j] = randStrNormal * scale;
+                            weightSum += weights[i, j];
+                            weightSquaredSum += weights[i, j] * weights[i, j];
+                        }
+
+                        double averageWeight = weightSum / (numofprevneirons + 1);
+                        double averageSquaredWeight = weightSquaredSum / (numofprevneirons + 1);
+                        double variance = averageSquaredWeight - (averageWeight * averageWeight);
+                        double baseOffset = Math.Sqrt(Math.Max(variance, 1e-8));
+
+                        avgSum += averageWeight;
+                        avgSquaredSum += baseOffset;
+
+                        for (int j = 0; j < numofprevneirons + 1; j++)
+                        {
+                            tmpStrWeights[i] += weights[i, j].ToString().Replace(',', '.') + ";";
+                        }
+                    }
+
+                    avgSum /= numofneirons;
+                    avgSquaredSum /= numofneirons;
+
+                    File.WriteAllLines(path, tmpStrWeights);
+                    break;
+            
             }
             return weights;
         }
