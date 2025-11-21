@@ -144,5 +144,16 @@ namespace MO_31_2_Varfolomeev_NeiroModel
 
             MessageBox.Show("Обучение успешно завершено.", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
+        private void button_Test_Click(object sender, EventArgs e)
+        {
+            network.Test(network);
+
+            for (int i = 0; i < network.E_errors_avr.Length; i++)
+            {
+                chart_Eavr.Series[0].Points.AddY(network.E_errors_avr[i]);
+            }
+
+            MessageBox.Show("Тестирование успешно завершено.", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
     }
 }

@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title3 = new System.Windows.Forms.DataVisualization.Charting.Title();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
@@ -54,6 +54,7 @@
             this.button_recognize = new System.Windows.Forms.Button();
             this.Button_train = new System.Windows.Forms.Button();
             this.chart_Eavr = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.button18 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_NecessaryOutput)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart_Eavr)).BeginInit();
             this.SuspendLayout();
@@ -210,14 +211,14 @@
             // 
             // numericUpDown_NecessaryOutput
             // 
-            this.numericUpDown_NecessaryOutput.Location = new System.Drawing.Point(25, 201);
+            this.numericUpDown_NecessaryOutput.Location = new System.Drawing.Point(9, 241);
             this.numericUpDown_NecessaryOutput.Name = "numericUpDown_NecessaryOutput";
-            this.numericUpDown_NecessaryOutput.Size = new System.Drawing.Size(162, 26);
+            this.numericUpDown_NecessaryOutput.Size = new System.Drawing.Size(156, 26);
             this.numericUpDown_NecessaryOutput.TabIndex = 15;
             // 
             // button16
             // 
-            this.button16.Location = new System.Drawing.Point(25, 233);
+            this.button16.Location = new System.Drawing.Point(9, 273);
             this.button16.Name = "button16";
             this.button16.Size = new System.Drawing.Size(75, 65);
             this.button16.TabIndex = 16;
@@ -227,7 +228,7 @@
             // 
             // button17
             // 
-            this.button17.Location = new System.Drawing.Point(106, 233);
+            this.button17.Location = new System.Drawing.Point(90, 273);
             this.button17.Name = "button17";
             this.button17.Size = new System.Drawing.Size(75, 65);
             this.button17.TabIndex = 17;
@@ -257,9 +258,9 @@
             // 
             // button_recognize
             // 
-            this.button_recognize.Location = new System.Drawing.Point(25, 121);
+            this.button_recognize.Location = new System.Drawing.Point(12, 121);
             this.button_recognize.Name = "button_recognize";
-            this.button_recognize.Size = new System.Drawing.Size(140, 34);
+            this.button_recognize.Size = new System.Drawing.Size(153, 34);
             this.button_recognize.TabIndex = 21;
             this.button_recognize.Text = "Распознать";
             this.button_recognize.UseVisualStyleBackColor = true;
@@ -267,9 +268,9 @@
             // 
             // Button_train
             // 
-            this.Button_train.Location = new System.Drawing.Point(25, 161);
+            this.Button_train.Location = new System.Drawing.Point(12, 161);
             this.Button_train.Name = "Button_train";
-            this.Button_train.Size = new System.Drawing.Size(140, 33);
+            this.Button_train.Size = new System.Drawing.Size(153, 33);
             this.Button_train.TabIndex = 22;
             this.Button_train.Text = "Обучение";
             this.Button_train.UseVisualStyleBackColor = true;
@@ -277,22 +278,32 @@
             // 
             // chart_Eavr
             // 
-            chartArea1.Name = "ChartArea1";
-            this.chart_Eavr.ChartAreas.Add(chartArea1);
+            chartArea3.Name = "ChartArea1";
+            this.chart_Eavr.ChartAreas.Add(chartArea3);
             this.chart_Eavr.Location = new System.Drawing.Point(361, 12);
             this.chart_Eavr.Name = "chart_Eavr";
-            series1.BorderWidth = 3;
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series1.Name = "Series1";
-            this.chart_Eavr.Series.Add(series1);
+            series3.BorderWidth = 3;
+            series3.ChartArea = "ChartArea1";
+            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series3.Name = "Series1";
+            this.chart_Eavr.Series.Add(series3);
             this.chart_Eavr.Size = new System.Drawing.Size(734, 444);
             this.chart_Eavr.TabIndex = 23;
             this.chart_Eavr.Text = "chart1";
-            title1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            title1.Name = "Title1";
-            title1.Text = "График средних энергий ошибок";
-            this.chart_Eavr.Titles.Add(title1);
+            title3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            title3.Name = "Title1";
+            title3.Text = "График средних энергий ошибок";
+            this.chart_Eavr.Titles.Add(title3);
+            // 
+            // button18
+            // 
+            this.button18.Location = new System.Drawing.Point(12, 202);
+            this.button18.Name = "button18";
+            this.button18.Size = new System.Drawing.Size(153, 33);
+            this.button18.TabIndex = 24;
+            this.button18.Text = "Тестирование";
+            this.button18.UseVisualStyleBackColor = true;
+            this.button18.Click += new System.EventHandler(this.button_Test_Click);
             // 
             // FormMain
             // 
@@ -300,6 +311,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Highlight;
             this.ClientSize = new System.Drawing.Size(1098, 459);
+            this.Controls.Add(this.button18);
             this.Controls.Add(this.chart_Eavr);
             this.Controls.Add(this.Button_train);
             this.Controls.Add(this.button_recognize);
@@ -357,6 +369,7 @@
         private System.Windows.Forms.Button button_recognize;
         private System.Windows.Forms.Button Button_train;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart_Eavr;
+        private System.Windows.Forms.Button button18;
     }
 }
 

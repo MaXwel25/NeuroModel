@@ -110,7 +110,7 @@ namespace MO_31_2_Varfolomeev_NeiroModel.NeiroNet
 
                 // инициализация весов для нейронов
                 case MemoryMode.INIT:
-                    /*
+                    
                     tmpStrWeights = new string[numofneirons];
                     Random random = new Random();
 
@@ -130,11 +130,11 @@ namespace MO_31_2_Varfolomeev_NeiroModel.NeiroNet
                         for (int j = 0; j < numofprevneirons + 1; j++)
                         {
                             weights[i, j] -= averageWeight;
-                            
+                            /*
                             // гарантируем, что веса в пределах [-1, 1]
                             if (weights[i, j] > 1.0) weights[i, j] = 1.0;
                             if (weights[i, j] < -1.0) weights[i, j] = -1.0;
-                            
+                            */
                         }
 
                         // запись в файл
@@ -150,7 +150,8 @@ namespace MO_31_2_Varfolomeev_NeiroModel.NeiroNet
 
                     File.WriteAllLines(path, tmpStrWeights);
                     break;
-                    */
+                    
+                    /*
                     tmpStrWeights = new string[numofneirons];
                     Random random = new Random();
 
@@ -193,11 +194,11 @@ namespace MO_31_2_Varfolomeev_NeiroModel.NeiroNet
 
                     File.WriteAllLines(path, tmpStrWeights);
                     break;
-            
+            */
             }
             return weights;
         }
-
+        // доделать по критериям синаптические веса
         abstract public void Recognize(Network net, Layer nextLayer); // для прямых проходов
 
         abstract public double[] BackwardPass(double[] stuff); // и их обратных

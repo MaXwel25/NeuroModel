@@ -45,7 +45,7 @@ namespace MO_31_2_Varfolomeev_NeiroModel.NeiroNet
             int epoches = 15; // эпохи обучения
             double tmpSumError; // временная переменная суммы ошибок
             double[] errors; // вектор сигнала ошибки выходного слоя
-            double[] temp_gsums1; // вектор градиента 1-огго скрытого слоя
+            double[] temp_gsums1; // вектор градиента 1-ого скрытого слоя
             double[] temp_gsums2;
 
             e_error_avr = new double[epoches];
@@ -90,5 +90,50 @@ namespace MO_31_2_Varfolomeev_NeiroModel.NeiroNet
             net.hidden_layer2.WeightInitialize(MemoryMode.SET, nameof(hidden_layer2) + "_memory.csv");
             net.output_layer.WeightInitialize(MemoryMode.SET, nameof(output_layer) + "_memory.csv");
         }
+
+        // для теста (новая)
+        public void Test(Network net)
+        {
+            net.input_layer = new InputLayer(NetworkMode.Test); // инициализация входного слоя
+            int epoches = 10; // эпохи обучения
+            double tmpSumError; // временная переменная суммы ошибок
+            double[] errors; // вектор сигнала ошибки выходного слоя
+
+            e_error_avr = new double[epoches];
+
+            for (int k = 0; k < epoches; k++) // перебор эпох обучения
+            {
+                e_error_avr[k] = 0; // вначале каждой жпохи обучения значение средней энергии ошибки эпохи
+                net.input_layer.Shuffling_Array_Rows(net.input_layer.Testset); // перетасовка обучаюзей выборки
+                for (int i = 0; i < net.input_layer.Testset.GetLength(0); i++)
+                {
+                    double[] tmpTest = new double[15];  //обучающий образ
+                    for (int j = 0; j < tmpTest.Length; j++)
+                        tmpTest[j] = net.input_layer.Testset[i, j + 1]; // 
+
+                    // прямой проход
+                    ForwardPass(net, tmpTest); // прямой проход обучающего образа
+
+                    //вычмсление ошибки
+                    tmpSumError = 0;
+                    errors = new double[net.fact.Length];
+                    for (int x = 0; x < errors.Length; x++)
+                    {
+                        if (x == net.input_layer.Testset[i, 0])
+                            errors[x] = 1.0 - net.Fact[x];
+                        else
+                            errors[x] = -net.fact[x];
+
+                        tmpSumError += errors[x] * errors[x] / 2;
+                    }
+                    e_error_avr[k] += tmpSumError / errors.Length; // суммарное значение энергии ошибки
+                }
+                e_error_avr[k] /= net.input_layer.Testset.GetLength(0);
+            }
+
+            
+
+        }
+
     }
 }
