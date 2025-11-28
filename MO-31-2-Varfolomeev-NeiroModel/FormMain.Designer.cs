@@ -28,9 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title3 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title2 = new System.Windows.Forms.DataVisualization.Charting.Title();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
@@ -55,14 +58,16 @@
             this.Button_train = new System.Windows.Forms.Button();
             this.chart_Eavr = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.button18 = new System.Windows.Forms.Button();
+            this.chart_Accuracy = new System.Windows.Forms.DataVisualization.Charting.Chart();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_NecessaryOutput)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart_Eavr)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chart_Accuracy)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.Black;
-            this.button1.Location = new System.Drawing.Point(193, 9);
+            this.button1.Location = new System.Drawing.Point(15, 121);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(50, 50);
             this.button1.TabIndex = 0;
@@ -72,7 +77,7 @@
             // button2
             // 
             this.button2.BackColor = System.Drawing.Color.Black;
-            this.button2.Location = new System.Drawing.Point(249, 9);
+            this.button2.Location = new System.Drawing.Point(71, 121);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(50, 50);
             this.button2.TabIndex = 1;
@@ -82,7 +87,7 @@
             // button3
             // 
             this.button3.BackColor = System.Drawing.Color.Black;
-            this.button3.Location = new System.Drawing.Point(305, 9);
+            this.button3.Location = new System.Drawing.Point(127, 121);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(50, 50);
             this.button3.TabIndex = 2;
@@ -92,7 +97,7 @@
             // button4
             // 
             this.button4.BackColor = System.Drawing.Color.Black;
-            this.button4.Location = new System.Drawing.Point(193, 65);
+            this.button4.Location = new System.Drawing.Point(15, 177);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(50, 50);
             this.button4.TabIndex = 3;
@@ -102,7 +107,7 @@
             // button5
             // 
             this.button5.BackColor = System.Drawing.Color.Black;
-            this.button5.Location = new System.Drawing.Point(249, 65);
+            this.button5.Location = new System.Drawing.Point(71, 177);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(50, 50);
             this.button5.TabIndex = 4;
@@ -112,7 +117,7 @@
             // button6
             // 
             this.button6.BackColor = System.Drawing.Color.Black;
-            this.button6.Location = new System.Drawing.Point(305, 65);
+            this.button6.Location = new System.Drawing.Point(127, 177);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(50, 50);
             this.button6.TabIndex = 5;
@@ -122,7 +127,7 @@
             // button7
             // 
             this.button7.BackColor = System.Drawing.Color.Black;
-            this.button7.Location = new System.Drawing.Point(193, 121);
+            this.button7.Location = new System.Drawing.Point(15, 233);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(50, 50);
             this.button7.TabIndex = 6;
@@ -132,7 +137,7 @@
             // button8
             // 
             this.button8.BackColor = System.Drawing.Color.Black;
-            this.button8.Location = new System.Drawing.Point(249, 121);
+            this.button8.Location = new System.Drawing.Point(71, 233);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(50, 50);
             this.button8.TabIndex = 7;
@@ -142,7 +147,7 @@
             // button9
             // 
             this.button9.BackColor = System.Drawing.Color.Black;
-            this.button9.Location = new System.Drawing.Point(305, 121);
+            this.button9.Location = new System.Drawing.Point(127, 233);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(50, 50);
             this.button9.TabIndex = 8;
@@ -152,7 +157,7 @@
             // button10
             // 
             this.button10.BackColor = System.Drawing.Color.Black;
-            this.button10.Location = new System.Drawing.Point(193, 177);
+            this.button10.Location = new System.Drawing.Point(15, 289);
             this.button10.Name = "button10";
             this.button10.Size = new System.Drawing.Size(50, 50);
             this.button10.TabIndex = 9;
@@ -162,7 +167,7 @@
             // button11
             // 
             this.button11.BackColor = System.Drawing.Color.Black;
-            this.button11.Location = new System.Drawing.Point(249, 177);
+            this.button11.Location = new System.Drawing.Point(71, 289);
             this.button11.Name = "button11";
             this.button11.Size = new System.Drawing.Size(50, 50);
             this.button11.TabIndex = 10;
@@ -172,7 +177,7 @@
             // button12
             // 
             this.button12.BackColor = System.Drawing.Color.Black;
-            this.button12.Location = new System.Drawing.Point(305, 177);
+            this.button12.Location = new System.Drawing.Point(127, 289);
             this.button12.Name = "button12";
             this.button12.Size = new System.Drawing.Size(50, 50);
             this.button12.TabIndex = 11;
@@ -182,7 +187,7 @@
             // button13
             // 
             this.button13.BackColor = System.Drawing.Color.Black;
-            this.button13.Location = new System.Drawing.Point(193, 233);
+            this.button13.Location = new System.Drawing.Point(15, 345);
             this.button13.Name = "button13";
             this.button13.Size = new System.Drawing.Size(50, 50);
             this.button13.TabIndex = 12;
@@ -192,7 +197,7 @@
             // button14
             // 
             this.button14.BackColor = System.Drawing.Color.Black;
-            this.button14.Location = new System.Drawing.Point(249, 233);
+            this.button14.Location = new System.Drawing.Point(71, 345);
             this.button14.Name = "button14";
             this.button14.Size = new System.Drawing.Size(50, 50);
             this.button14.TabIndex = 13;
@@ -202,7 +207,7 @@
             // button15
             // 
             this.button15.BackColor = System.Drawing.Color.Black;
-            this.button15.Location = new System.Drawing.Point(305, 233);
+            this.button15.Location = new System.Drawing.Point(127, 345);
             this.button15.Name = "button15";
             this.button15.Size = new System.Drawing.Size(50, 50);
             this.button15.TabIndex = 14;
@@ -211,16 +216,16 @@
             // 
             // numericUpDown_NecessaryOutput
             // 
-            this.numericUpDown_NecessaryOutput.Location = new System.Drawing.Point(9, 241);
+            this.numericUpDown_NecessaryOutput.Location = new System.Drawing.Point(12, 527);
             this.numericUpDown_NecessaryOutput.Name = "numericUpDown_NecessaryOutput";
-            this.numericUpDown_NecessaryOutput.Size = new System.Drawing.Size(156, 26);
+            this.numericUpDown_NecessaryOutput.Size = new System.Drawing.Size(165, 26);
             this.numericUpDown_NecessaryOutput.TabIndex = 15;
             // 
             // button16
             // 
-            this.button16.Location = new System.Drawing.Point(9, 273);
+            this.button16.Location = new System.Drawing.Point(12, 559);
             this.button16.Name = "button16";
-            this.button16.Size = new System.Drawing.Size(75, 65);
+            this.button16.Size = new System.Drawing.Size(84, 65);
             this.button16.TabIndex = 16;
             this.button16.Text = "Save Train";
             this.button16.UseVisualStyleBackColor = true;
@@ -228,9 +233,9 @@
             // 
             // button17
             // 
-            this.button17.Location = new System.Drawing.Point(90, 273);
+            this.button17.Location = new System.Drawing.Point(93, 559);
             this.button17.Name = "button17";
-            this.button17.Size = new System.Drawing.Size(75, 65);
+            this.button17.Size = new System.Drawing.Size(84, 65);
             this.button17.TabIndex = 17;
             this.button17.Text = "Save Test";
             this.button17.UseVisualStyleBackColor = true;
@@ -240,7 +245,7 @@
             // 
             this.labelout.AutoSize = true;
             this.labelout.Font = new System.Drawing.Font("Microsoft Sans Serif", 28F);
-            this.labelout.Location = new System.Drawing.Point(32, 9);
+            this.labelout.Location = new System.Drawing.Point(3, 12);
             this.labelout.Name = "labelout";
             this.labelout.Size = new System.Drawing.Size(118, 64);
             this.labelout.TabIndex = 19;
@@ -250,7 +255,7 @@
             // 
             this.labelprobability.AutoSize = true;
             this.labelprobability.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.labelprobability.Location = new System.Drawing.Point(4, 83);
+            this.labelprobability.Location = new System.Drawing.Point(2, 76);
             this.labelprobability.Name = "labelprobability";
             this.labelprobability.Size = new System.Drawing.Size(183, 32);
             this.labelprobability.TabIndex = 20;
@@ -258,9 +263,9 @@
             // 
             // button_recognize
             // 
-            this.button_recognize.Location = new System.Drawing.Point(12, 121);
+            this.button_recognize.Location = new System.Drawing.Point(15, 407);
             this.button_recognize.Name = "button_recognize";
-            this.button_recognize.Size = new System.Drawing.Size(153, 34);
+            this.button_recognize.Size = new System.Drawing.Size(162, 34);
             this.button_recognize.TabIndex = 21;
             this.button_recognize.Text = "Распознать";
             this.button_recognize.UseVisualStyleBackColor = true;
@@ -268,9 +273,9 @@
             // 
             // Button_train
             // 
-            this.Button_train.Location = new System.Drawing.Point(12, 161);
+            this.Button_train.Location = new System.Drawing.Point(15, 447);
             this.Button_train.Name = "Button_train";
-            this.Button_train.Size = new System.Drawing.Size(153, 33);
+            this.Button_train.Size = new System.Drawing.Size(162, 33);
             this.Button_train.TabIndex = 22;
             this.Button_train.Text = "Обучение";
             this.Button_train.UseVisualStyleBackColor = true;
@@ -278,39 +283,60 @@
             // 
             // chart_Eavr
             // 
-            chartArea3.Name = "ChartArea1";
-            this.chart_Eavr.ChartAreas.Add(chartArea3);
-            this.chart_Eavr.Location = new System.Drawing.Point(361, 12);
+            chartArea1.Name = "ChartArea1";
+            this.chart_Eavr.ChartAreas.Add(chartArea1);
+            this.chart_Eavr.Location = new System.Drawing.Point(191, 12);
             this.chart_Eavr.Name = "chart_Eavr";
-            series3.BorderWidth = 3;
-            series3.ChartArea = "ChartArea1";
-            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series3.Name = "Series1";
-            this.chart_Eavr.Series.Add(series3);
-            this.chart_Eavr.Size = new System.Drawing.Size(734, 444);
+            series1.BorderWidth = 3;
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series1.Name = "Series1";
+            this.chart_Eavr.Series.Add(series1);
+            this.chart_Eavr.Size = new System.Drawing.Size(1208, 383);
             this.chart_Eavr.TabIndex = 23;
             this.chart_Eavr.Text = "chart1";
-            title3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            title3.Name = "Title1";
-            title3.Text = "График средних энергий ошибок";
-            this.chart_Eavr.Titles.Add(title3);
+            title1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            title1.Name = "Title1";
+            title1.Text = "График средних энергий ошибок";
+            this.chart_Eavr.Titles.Add(title1);
             // 
             // button18
             // 
-            this.button18.Location = new System.Drawing.Point(12, 202);
+            this.button18.Location = new System.Drawing.Point(15, 488);
             this.button18.Name = "button18";
-            this.button18.Size = new System.Drawing.Size(153, 33);
+            this.button18.Size = new System.Drawing.Size(162, 33);
             this.button18.TabIndex = 24;
             this.button18.Text = "Тестирование";
             this.button18.UseVisualStyleBackColor = true;
             this.button18.Click += new System.EventHandler(this.button_Test_Click);
+            // 
+            // chart_Accuracy
+            // 
+            chartArea2.Name = "ChartArea1";
+            this.chart_Accuracy.ChartAreas.Add(chartArea2);
+            this.chart_Accuracy.Location = new System.Drawing.Point(191, 401);
+            this.chart_Accuracy.Name = "chart_Accuracy";
+            this.chart_Accuracy.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Bright;
+            series2.BorderWidth = 3;
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series2.Name = "Series1";
+            this.chart_Accuracy.Series.Add(series2);
+            this.chart_Accuracy.Size = new System.Drawing.Size(1208, 383);
+            this.chart_Accuracy.TabIndex = 25;
+            this.chart_Accuracy.Text = "chart1";
+            title2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            title2.Name = "Title1";
+            title2.Text = "График точности";
+            this.chart_Accuracy.Titles.Add(title2);
             // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Highlight;
-            this.ClientSize = new System.Drawing.Size(1098, 459);
+            this.ClientSize = new System.Drawing.Size(1407, 794);
+            this.Controls.Add(this.chart_Accuracy);
             this.Controls.Add(this.button18);
             this.Controls.Add(this.chart_Eavr);
             this.Controls.Add(this.Button_train);
@@ -339,6 +365,7 @@
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_NecessaryOutput)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart_Eavr)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chart_Accuracy)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -370,6 +397,7 @@
         private System.Windows.Forms.Button Button_train;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart_Eavr;
         private System.Windows.Forms.Button button18;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chart_Accuracy;
     }
 }
 

@@ -1,9 +1,10 @@
-﻿using System;
+﻿using MO_31_2_Varfolomeev_NeiroModel.NeiroNet;
+using System;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Windows.Forms;
-using System.IO;
-using MO_31_2_Varfolomeev_NeiroModel.NeiroNet;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace MO_31_2_Varfolomeev_NeiroModel
 {
@@ -23,7 +24,6 @@ namespace MO_31_2_Varfolomeev_NeiroModel
             InitializeComponent();
 
             inputPixels = new double[15];
-
             network = new Network(); // инициализайия нейросети
         }
 
@@ -47,7 +47,7 @@ namespace MO_31_2_Varfolomeev_NeiroModel
         {
             string path = AppDomain.CurrentDomain.BaseDirectory + "train.txt";
             string tmpStr = numericUpDown_NecessaryOutput.Value.ToString();
-        
+
             for (int i = 0; i < inputPixels.Length; i++)
             {
                 tmpStr += " " + inputPixels[i].ToString();
@@ -56,7 +56,6 @@ namespace MO_31_2_Varfolomeev_NeiroModel
 
             File.AppendAllText(path, tmpStr);
         }
-
 
 
         // кнопка для сохранения Test
@@ -140,6 +139,7 @@ namespace MO_31_2_Varfolomeev_NeiroModel
             for (int i=0; i < network.E_errors_avr.Length; i++)
             {
                 chart_Eavr.Series[0].Points.AddY(network.E_errors_avr[i]);
+                chart_Accuracy.Series[0].Points.AddY(network.Accuracy_avr[i]);
             }
 
             MessageBox.Show("Обучение успешно завершено.", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -151,6 +151,7 @@ namespace MO_31_2_Varfolomeev_NeiroModel
             for (int i = 0; i < network.E_errors_avr.Length; i++)
             {
                 chart_Eavr.Series[0].Points.AddY(network.E_errors_avr[i]);
+                chart_Accuracy.Series[0].Points.AddY(network.Accuracy_avr[i]);
             }
 
             MessageBox.Show("Тестирование успешно завершено.", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);

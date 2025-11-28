@@ -1,4 +1,7 @@
 ﻿
+using System;
+using System.Linq;
+
 namespace MO_31_2_Varfolomeev_NeiroModel.NeiroNet
 {
     class Network
@@ -11,12 +14,12 @@ namespace MO_31_2_Varfolomeev_NeiroModel.NeiroNet
 
         private double[] fact = new double[10]; // массив фактического выхода сети
         private double[] e_error_avr; // среднее значение энергии ошибки
-
+        private double[] accuracy_avr; // для точности
         // свойства
         public double[] Fact { get => fact; } // массив фактического выхода сети
         // среднее значение энергии ошибки эпохи обучения
         public double[] E_errors_avr { get => e_error_avr; set => e_error_avr = value;  }
-
+        public double[] Accuracy_avr { get => accuracy_avr; set => accuracy_avr = value; }
         // для инициализации всех слоёв
         /*
         public void InitializeLayers()
@@ -49,11 +52,15 @@ namespace MO_31_2_Varfolomeev_NeiroModel.NeiroNet
             double[] temp_gsums2;
 
             e_error_avr = new double[epoches];
+            accuracy_avr = new double[epoches]; // добавляем массив для точности
 
             for (int k = 0; k < epoches; k++) // перебор эпох обучения
             {
-                e_error_avr[k] = 0; // вначале каждой жпохи обучения значение средней энергии ошибки эпохи
+                e_error_avr[k] = 0; // вначале каждой эпохи обучения значение средней энергии ошибки эпохи
+                accuracy_avr[k] = 0; // точность на эпохе
+                
                 net.input_layer.Shuffling_Array_Rows(net.input_layer.Trainset); // перетасовка обучаюзей выборки
+                int correctPredictions = 0;
                 for (int i=0; i < net.input_layer.Trainset.GetLength(0); i++)
                 {
                     double[] tmpTrain = new double[15];  //обучающий образ
@@ -76,12 +83,19 @@ namespace MO_31_2_Varfolomeev_NeiroModel.NeiroNet
                     }
                     e_error_avr[k] += tmpSumError / errors.Length; // Суммарное значение энергии ошибки
 
+                    // вычисление точности
+                    int predictedClass = Array.IndexOf(net.Fact, net.Fact.Max());
+                    int trueClass = (int)net.input_layer.Trainset[i, 0];
+                    if (predictedClass == trueClass)
+                        correctPredictions++;
+
                     // обратный проход и коррекция весов !!!!!
                     temp_gsums2 = net.output_layer.BackwardPass(errors);
                     temp_gsums1 = net.hidden_layer2.BackwardPass(temp_gsums2);
                     net.hidden_layer1.BackwardPass(temp_gsums1);
                 }
                 e_error_avr[k] /= net.input_layer.Trainset.GetLength(0);
+                accuracy_avr[k] = (double)correctPredictions / net.input_layer.Trainset.GetLength(0);
             }
 
             net.input_layer = null;
@@ -100,11 +114,15 @@ namespace MO_31_2_Varfolomeev_NeiroModel.NeiroNet
             double[] errors; // вектор сигнала ошибки выходного слоя
 
             e_error_avr = new double[epoches];
+            accuracy_avr = new double[epoches]; // добавляем массив для точности
 
             for (int k = 0; k < epoches; k++) // перебор эпох обучения
             {
                 e_error_avr[k] = 0; // вначале каждой жпохи обучения значение средней энергии ошибки эпохи
+                accuracy_avr[k] = 0; // точность на эпохе
+
                 net.input_layer.Shuffling_Array_Rows(net.input_layer.Testset); // перетасовка обучаюзей выборки
+                int correctPredictions = 0;
                 for (int i = 0; i < net.input_layer.Testset.GetLength(0); i++)
                 {
                     double[] tmpTest = new double[15];  //обучающий образ
@@ -127,8 +145,16 @@ namespace MO_31_2_Varfolomeev_NeiroModel.NeiroNet
                         tmpSumError += errors[x] * errors[x] / 2;
                     }
                     e_error_avr[k] += tmpSumError / errors.Length; // суммарное значение энергии ошибки
+
+                    // вычисление точности
+                    int predictedClass = Array.IndexOf(net.Fact, net.Fact.Max());
+                    int trueClass = (int)net.input_layer.Testset[i, 0];
+                    if (predictedClass == trueClass)
+                        correctPredictions++;
+
                 }
                 e_error_avr[k] /= net.input_layer.Testset.GetLength(0);
+                accuracy_avr[k] = (double)correctPredictions / net.input_layer.Testset.GetLength(0);
             }
 
             
