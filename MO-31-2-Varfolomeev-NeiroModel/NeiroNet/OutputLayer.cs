@@ -24,15 +24,14 @@
             double[] gr_sum = new double[numofprevneirons + 1];
 
             // вычисление градиентныых сумм
-            for (int j = 0; j < numofprevneirons + 1; j++)
+            for (int j = 0; j < numofprevneirons; j++)
             {
                 double sum = 0;
                 for (int k = 0; k < numofneirons; k++)
-                    sum += neirons[k].Weights[j] * errors[k];
+                    sum += neirons[k].Weights[j + 1] * errors[k];
 
                 gr_sum[j] = sum;
             }
-
             for (int i = 0; i < numofneirons; i++) // цикл коррекции синаптических весов
             {
                 for (int n = 0; n < numofprevneirons + 1; n++)

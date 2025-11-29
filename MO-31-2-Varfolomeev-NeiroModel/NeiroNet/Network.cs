@@ -45,7 +45,7 @@ namespace MO_31_2_Varfolomeev_NeiroModel.NeiroNet
         public void Train(Network net)
         {
             net.input_layer = new InputLayer(NetworkMode.Train); // инициализация входного слоя
-            int epoches = 15; // эпохи обучения
+            int epoches = 10; // эпохи обучения
             double tmpSumError; // временная переменная суммы ошибок
             double[] errors; // вектор сигнала ошибки выходного слоя
             double[] temp_gsums1; // вектор градиента 1-ого скрытого слоя
@@ -132,7 +132,7 @@ namespace MO_31_2_Varfolomeev_NeiroModel.NeiroNet
                     // прямой проход
                     ForwardPass(net, tmpTest); // прямой проход обучающего образа
 
-                    //вычмсление ошибки
+                    // вычмсление ошибки
                     tmpSumError = 0;
                     errors = new double[net.fact.Length];
                     for (int x = 0; x < errors.Length; x++)

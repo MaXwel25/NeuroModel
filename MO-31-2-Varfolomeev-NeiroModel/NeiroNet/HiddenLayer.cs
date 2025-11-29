@@ -26,7 +26,7 @@
                 double sum = 0;
                 for (int k=0; k < numofneirons; k++)
                 {
-                    sum += neirons[k].Weights[j] * neirons[k].Derivative * gr_sums[k]; // через градиентные суммы и производные
+                    sum += neirons[k].Weights[j + 1] * neirons[k].Derivative * gr_sums[k]; // через градиентные суммы и производные
                 }
                 gr_sum[j] = sum;
             }

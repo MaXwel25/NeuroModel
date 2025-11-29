@@ -15,8 +15,8 @@ namespace MO_31_2_Varfolomeev_NeiroModel.NeiroNet
         string pathFileWeights; // путь к файлу саниптическов весов
         protected int numofneirons; // число нейронов текущего слоя
         protected int numofprevneirons; // число нейронов предыдущего слоя
-        protected const double learningrate = 0.052; // скорость обучен ия 0.06
-        protected const double momentum = 0.15d; // момент инерции 0.050d
+        protected const double learningrate = 0.0545; // скорость обучен ия 0.06
+        protected const double momentum = 0.15d; //0.15d; // момент инерции 0.050d
         protected double[,] lastdeltaweights; // веса предыдущей итерации
         protected Neiron[] neirons; // массив нейронов текущего слоя
 
